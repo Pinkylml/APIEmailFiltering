@@ -13,12 +13,12 @@ class BuscarCorreoAPIView(ListAPIView):
 
         filtros = self.request.query_params
 
-        # Filtro obligatorio: contenido
+        
         contenido = filtros.get('contenido', None)
         if contenido:
-            queryset = queryset.filter(Q(destinatario__icontains=contenido) | Q(emisor__icontains=contenido))
+            queryset = queryset.filter(Q(destinatario__icontains=contenido) | Q(emisor__icontains=contenido) | Q(contenido__icontains=contenido))
 
-        # Filtros opcionales
+        
         destinatario = filtros.get('destinatario', None)
         if destinatario:
             queryset = queryset.filter(destinatario__icontains=destinatario)
@@ -47,7 +47,6 @@ class BuscarCorreoAPIView(ListAPIView):
         # Filtro por empresa (busca por ID)
         empresa = filtros.get('empresa', None)
         if empresa:
-            
             if empresa.isdigit():  # Asegura que el filtro sea un número (ID)
                 queryset = queryset.filter(empresa_id=empresa)
             else:

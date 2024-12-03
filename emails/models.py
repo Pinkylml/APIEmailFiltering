@@ -13,6 +13,7 @@ class Correo(models.Model):
     fecha = models.DateTimeField()
     empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE)
     codigo_unico_smtp = models.CharField(max_length=255, unique=True)
+    contenido = models.TextField()
 
     def __str__(self):
         return f"{self.emisor} -> {self.destinatario}"
