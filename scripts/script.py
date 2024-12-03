@@ -13,6 +13,7 @@ empresas = [
     Empresa.objects.create(nombre="Empresa C"),
     Empresa.objects.create(nombre="Empresa D"),
     Empresa.objects.create(nombre="Empresa E"),
+    Empresa.objects.create(nombre="Empresa F"),
 ]
 
 # Función para generar correos aleatorios

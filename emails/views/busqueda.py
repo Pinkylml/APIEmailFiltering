@@ -1,3 +1,6 @@
+
+       
+
 from rest_framework.generics import ListAPIView
 from rest_framework.exceptions import ValidationError
 from ..models import Correo
@@ -13,6 +16,8 @@ class BuscarCorreoAPIView(ListAPIView):
 
         filtros = self.request.query_params
 
+        if not filtros or not any(filtros.values()):
+            return {}  # Retorna un diccionario vacío si no hay filtros
         
         contenido = filtros.get('contenido', None)
         if contenido:
