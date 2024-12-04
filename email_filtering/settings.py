@@ -79,14 +79,7 @@ WSGI_APPLICATION = 'email_filtering.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'emaildb_e1go',
-        'USER': 'jeff',
-        'PASSWORD': 'JzoJ2gAJLvdWVVbxZHB2BWnSiiFESEZi',
-        'HOST': 'dpg-ct8dbg3qf0us73enccc0-a',
-        'PORT': '5432',  # Puerto por defecto para PostgreSQL
-    }
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
 
