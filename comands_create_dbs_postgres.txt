@@ -1,0 +1,43 @@
+
+
+
+Comando para ingresar a la linea de comandos de postgres: sudo -u postgres psql
+
+
+
+CREATE DATABASE "email.db";
+CREATE USER jeff WITH PASSWORD '12345678jeff';
+ALTER ROLE jeff SET client_encoding TO 'utf8';
+ALTER ROLE jeff SET default_transaction_isolation TO 'read committed';
+ALTER ROLE jeff SET timezone TO 'America/Guayaquil';  
+GRANT ALL PRIVILEGES ON DATABASE "email.db" TO jeff;
+
+
+
+
+Estoy creando una base de datos email.db con el nombre de usuario jeff y contraseña 12345678jeff, igual configuro la zona horario y damos privilegios.
+En la linea de comandos de postgresspodemos comprobar:
+
+\l
+
+    Muestra todas las bases de datos en el servidor de PostgreSQL.
+
+\c email.db
+
+    Se conecta a la base de datos email.db (reemplaza email.db con el nombre de tu base de datos).
+
+\dt
+
+    Muestra todas las tablas (relaciones) de la base de datos a la que estás conectado.
+
+\d
+
+    Muestra todas las relaciones (tablas, vistas, índices, etc.) en la base de datos.
+
+\q
+
+    Sale del cliente de PostgreSQL.
+
+python manage.py showmigrations
+
+    Muestra todas las migraciones de Django, indicando cuáles están pendientes o ya aplicadas.

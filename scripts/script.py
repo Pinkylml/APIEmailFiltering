@@ -14,6 +14,8 @@ empresas = [
     Empresa.objects.create(nombre="Empresa D"),
     Empresa.objects.create(nombre="Empresa E"),
     Empresa.objects.create(nombre="Empresa F"),
+    Empresa.objects.create(nombre="Empresa G"),
+    Empresa.objects.create(nombre="Empresa H"),
 ]
 
 # Función para generar correos aleatorios
@@ -35,7 +37,7 @@ def generar_correo(empresa):
 
 # Agregar 25 correos por cada empresa
 for empresa in empresas:
-    for _ in range(25):
+    for _ in range(100):
         generar_correo(empresa).save()
 
 print("Datos insertados exitosamente")
