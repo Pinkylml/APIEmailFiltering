@@ -3,6 +3,8 @@
 
 from rest_framework.generics import ListAPIView
 from rest_framework.exceptions import ValidationError
+from rest_framework import status
+from rest_framework.response import Response
 from ..models import Correo
 from ..serializers import CorreoSerializer
 from django.db.models import Q
@@ -10,6 +12,7 @@ from datetime import datetime
 
 class BuscarCorreoAPIView(ListAPIView):
     serializer_class = CorreoSerializer
+    used_filters=['contenido','destinatario','emisor','fecha_inicio','fecha_fin','empresa','size','page']
 
     def get_queryset(self):
         queryset = Correo.objects.all()
@@ -19,7 +22,16 @@ class BuscarCorreoAPIView(ListAPIView):
         if not filtros or not any(filtros.values()):
             return {}  # Retorna un diccionario vacío si no hay filtros
         
+        invalid_filters = [filtro for filtro in filtros.keys() if filtro not in self.used_filters]
+        
+        if invalid_filters:
+            # Lanza una validación con el código de error 400 y un mensaje detallado
+            raise ValidationError(
+                detail=f"Filtros no válidos: {', '.join(invalid_filters)}",
+                code=status.HTTP_400_BAD_REQUEST
+            )
         contenido = filtros.get('contenido', None)
+        
         if contenido:
             queryset = queryset.filter(Q(destinatario__icontains=contenido) | Q(emisor__icontains=contenido) | Q(contenido__icontains=contenido))
 
