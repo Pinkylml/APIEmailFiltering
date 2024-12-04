@@ -22,10 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-53revv^5b9pw_(qn1h4t05hvdx+tl+f1jv9w-+i@%ko88w2#)('
+SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'email_filtering.wsgi.application'
 
 DATABASES = {
     'default':dj_database_url.config(
-        default='postgresql://jeff:12345678jeff@localhost:5432/email.db',
+        default='postgresql://jeff:JzoJ2gAJLvdWVVbxZHB2BWnSiiFESEZi@dpg-ct8dbg3qf0us73enccc0-a.frankfurt-postgres.render.com/emaildb_e1go',
         conn_max_age=600
     )
       

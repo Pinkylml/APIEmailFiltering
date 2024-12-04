@@ -18,6 +18,7 @@ class BuscarCorreoAPIView(ListAPIView):
         queryset = Correo.objects.all()
 
         filtros = self.request.query_params
+        print(filtros)
 
         if not filtros or not any(filtros.values()):
             return {}  # Retorna un diccionario vacío si no hay filtros
