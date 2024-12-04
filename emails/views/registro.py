@@ -7,8 +7,10 @@ from ..serializers import CorreoSerializer
 class RegistrarCorreoAPIView(APIView):
     def post(self, request):
         data = request.data
+        print("data",data)
         
         empresa_nombre = data.get('empresa')
+        print("Nombre de la empresa:", empresa_nombre)
 
         try:
             empresa = Empresa.objects.get(nombre=empresa_nombre)

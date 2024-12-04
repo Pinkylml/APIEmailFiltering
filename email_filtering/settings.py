@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'email_filtering.wsgi.application'
 
 DATABASES = {
     'default':dj_database_url.config(
-        default='postgresql://jeff:JzoJ2gAJLvdWVVbxZHB2BWnSiiFESEZi@dpg-ct8dbg3qf0us73enccc0-a.frankfurt-postgres.render.com/emaildb_e1go',
+        default='postgresql://jeff:JzoJ2gAJLvdWVVbxZHB2BWnSiiFESEZi@dpg-ct8dbg3qf0us73enccc0-a/emaildb_e1go',
         conn_max_age=600
     )
       
